@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#176b49">
+  <meta name="description" content="รู้จักอาหารในจานของคุณ ประเมินสารอาหารจากภาพด้วย AI พร้อมประวัติและข้อมูลโภชนาการภาษาไทย">
+  <title>AI FOOD SCANNER — เข้าใจทุกคำ ดูแลทุกวัน</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/vendor/chart.js" defer></script>
+  <script src="/index.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">ข้ามไปเนื้อหา</a>
+  <header class="header">
+    <a href="#home" class="brand" aria-label="AI Food Scanner หน้าแรก"><span class="brand-icon">✳</span><span>FOOD<span class="brand-light">SCAN</span><small>POWERED BY AI · MADE FOR YOU</small></span></a>
+    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="navigation" aria-label="เปิดเมนู">☰</button>
+    <nav id="navigation" aria-label="เมนูหลัก">
+      <a href="#home" data-nav="home" class="active">หน้าแรก</a>
+      <a href="#scan" data-nav="scan">วิเคราะห์อาหาร</a>
+      <a href="#history" data-nav="history">ประวัติ <span id="history-count" class="nav-count">0</span></a>
+      <a href="#about" data-nav="about">เกี่ยวกับเรา</a>
+    </nav>
+    <a class="button small header-action" href="#scan">เริ่มสแกนอาหาร <span aria-hidden="true">↗</span></a>
+  </header>
+  <main id="main" tabindex="-1">
+    <section id="home" class="page home-page" aria-labelledby="hero-title">
+      <div class="hero wrap">
+        <div class="hero-copy">
+          <span class="eyebrow"><span class="status-dot"></span> YOUR EVERYDAY NUTRITION COMPANION</span>
+          <p class="product-name">AI FOOD SCANNER</p>
+          <h1 id="hero-title">รู้จักอาหารในจาน<br>ดูแลตัวเองได้<span class="green handwritten">ดีกว่าเดิม<svg viewBox="0 0 300 15" aria-hidden="true"><path d="M3 11 Q140 -2 296 8"/></svg></span></h1>
+          <p class="hero-description">เปลี่ยนภาพมื้ออร่อย ให้เป็นความเข้าใจเรื่องโภชนาการ<br class="desktop-break"> ประเมินสารอาหารด้วย AI และเริ่มดูแลสุขภาพในแบบของคุณ</p>
+          <div class="hero-buttons"><a class="button" href="#scan"><span aria-hidden="true">⌖</span> วิเคราะห์อาหารของคุณ <span aria-hidden="true">↗</span></a><a class="text-button" href="#how-it-works">ทำงานอย่างไร <span class="circle-arrow" aria-hidden="true">↓</span></a></div>
+          <div class="hero-assurance"><span><i>✓</i> ไม่ต้องสมัครสมาชิก</span><span><i>✓</i> เก็บ API Key ฝั่งเซิร์ฟเวอร์</span></div>
+        </div>
+        <div class="hero-visual" aria-label="ภาพวาดจานอาหารสมดุล ประกอบด้วยผัก ไข่ อะโวคาโด และธัญพืช">
+          <div class="visual-orbit orbit-one"></div><div class="visual-orbit orbit-two"></div>
+          <span class="visual-label">A LITTLE MORE BALANCED.</span>
+          <svg class="food-art" viewBox="0 0 560 560" role="img" aria-label="ภาพประกอบอาหารเพื่อสุขภาพ ไม่ใช่ภาพผลวิเคราะห์จริง">
+            <defs>
+              <radialGradient id="plate"><stop offset="0" stop-color="#fffdf6"/><stop offset=".83" stop-color="#f8f4e9"/><stop offset="1" stop-color="#e3ded0"/></radialGradient>
+              <radialGradient id="yolk"><stop stop-color="#ffd54d"/><stop offset="1" stop-color="#efad23"/></radialGradient>
+              <linearGradient id="avo" x2="1" y2="1"><stop stop-color="#d6e88e"/><stop offset="1" stop-color="#9cbc52"/></linearGradient>
+              <filter id="shadow"><feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="#244c30" flood-opacity=".18"/></filter>
+              <filter id="foodshadow"><feDropShadow dx="2" dy="4" stdDeviation="3" flood-color="#263d1c" flood-opacity=".18"/></filter>
+            </defs>
+            <g filter="url(#shadow)"><circle cx="280" cy="280" r="224" fill="url(#plate)"/><circle cx="280" cy="280" r="197" fill="none" stroke="#e8e5d7" stroke-width="2"/><circle cx="280" cy="280" r="187" fill="#f1eee0"/></g>
+            <g filter="url(#foodshadow)">
+              <g fill="#457944" stroke="#305d35" stroke-width="2"><path d="M155 345Q74 290 132 254Q68 219 144 193Q100 146 171 153Q174 99 213 139Q253 103 269 162L256 271Z"/><path d="M288 168Q278 105 317 128Q355 91 372 143Q422 124 416 177Q471 186 426 220Q467 260 416 282L325 278Z"/></g>
+              <g fill="#6e994d"><ellipse cx="149" cy="218" rx="30" ry="55" transform="rotate(-30 149 218)"/><ellipse cx="199" cy="172" rx="27" ry="46" transform="rotate(28 199 172)"/><ellipse cx="385" cy="177" rx="28" ry="44" transform="rotate(44 385 177)"/></g>
+              <g stroke="#9fbb72" stroke-width="2" fill="none"><path d="M125 171L231 285M117 203L164 214L158 176M145 246L187 247L184 207M390 140L345 248M415 175L378 184L365 152"/></g>
+              <path d="M138 325Q127 274 193 271Q243 256 276 307Q291 363 243 397Q171 416 138 362Z" fill="#e1bd7d"/>
+              <g fill="#f0d7a7" stroke="#cda35f" stroke-width="1"><ellipse cx="172" cy="313" rx="9" ry="5" transform="rotate(30 172 313)"/><ellipse cx="193" cy="294" rx="8" ry="4"/><ellipse cx="219" cy="314" rx="8" ry="5"/><ellipse cx="249" cy="331" rx="9" ry="4"/><ellipse cx="232" cy="354" rx="8" ry="5"/><ellipse cx="199" cy="343" rx="9" ry="5"/><ellipse cx="166" cy="347" rx="8" ry="4"/><ellipse cx="184" cy="372" rx="9" ry="5"/><ellipse cx="218" cy="381" rx="9" ry="5"/><ellipse cx="152" cy="331" rx="8" ry="5"/><ellipse cx="213" cy="329" rx="8" ry="4"/><ellipse cx="238" cy="302" rx="8" ry="4"/><ellipse cx="252" cy="365" rx="8" ry="4"/><ellipse cx="184" cy="327" rx="8" ry="4"/></g>
+              <g transform="rotate(-25 320 205)"><ellipse cx="308" cy="205" rx="56" ry="74" fill="#fffdf0"/><ellipse cx="305" cy="210" rx="34" ry="37" fill="url(#yolk)"/><ellipse cx="295" cy="198" rx="12" ry="8" fill="#ffe489" opacity=".8"/></g>
+              <g transform="rotate(29 362 332)"><path d="M354 250Q408 268 421 342Q424 401 365 414Q307 408 305 359Q305 306 354 250Z" fill="#35562d"/><path d="M355 260Q400 280 410 342Q415 391 365 403Q318 398 316 358Q317 309 355 260Z" fill="url(#avo)"/><ellipse cx="365" cy="355" rx="29" ry="34" fill="#986036"/><ellipse cx="358" cy="346" rx="19" ry="23" fill="#b47a46"/></g>
+              <g fill="#dd5a3e" stroke="#b8412d" stroke-width="2"><circle cx="224" cy="222" r="27"/><circle cx="264" cy="258" r="24"/><circle cx="394" cy="249" r="23"/></g>
+              <g fill="#f5ad7c"><path d="M223 200L226 220L207 212Q209 203 223 200M229 225L245 214Q255 233 232 242Z"/><path d="M262 239L264 255L248 250ZM270 259L282 251Q291 269 270 277Z"/><path d="M393 232L395 246L381 243ZM399 253L412 246Q418 262 400 265Z"/></g>
+              <g fill="#72955a" stroke="#e3edc8" stroke-width="5"><circle cx="303" cy="414" r="26"/><circle cx="273" cy="383" r="25"/></g><g stroke="#d8e4b1" stroke-width="2"><path d="M303 391V438M280 414H326M273 360V406M251 383H296"/></g>
+              <g fill="#ddd6b4"><ellipse cx="251" cy="177" rx="3" ry="6" transform="rotate(30 251 177)"/><ellipse cx="208" cy="253" rx="3" ry="6"/><ellipse cx="339" cy="272" rx="3" ry="6" transform="rotate(50 339 272)"/><ellipse cx="183" cy="228" rx="3" ry="6"/><ellipse cx="331" cy="393" rx="3" ry="6"/></g>
+            </g>
+          </svg>
+          <div class="floating-card scan-float"><span class="float-icon">✧</span><div><strong>เข้าใจมื้ออาหารมากขึ้น</strong><small>ให้ AI ช่วยมองสารอาหารในจาน</small></div><span class="float-check">✓</span></div>
+          <div class="floating-card balance-float"><span class="mini-ring"></span><div><small>SMALL CHOICES.</small><strong>สุขภาพดี เริ่มที่มื้อนี้</strong></div></div>
+          <span class="illustration-caption">ภาพประกอบแนวคิดอาหารสมดุล · ไม่ใช่ผลวิเคราะห์</span>
+          <span class="visual-spark spark-one">✳</span><span class="visual-spark spark-two">✦</span>
+        </div>
+      </div>
+      <div class="benefit-strip wrap"><div><span class="benefit-icon">⌖</span><p><strong>มองอาหารให้ลึกกว่าเดิม</strong><small>ประเมินชนิดอาหารและส่วนประกอบ</small></p></div><div><span class="benefit-icon">◴</span><p><strong>สารอาหารครบ 7 ประเภท</strong><small>อ่านง่าย เข้าใจได้ในหน้าเดียว</small></p></div><div><span class="benefit-icon">▤</span><p><strong>ทุกมื้อมีเรื่องราว</strong><small>ย้อนดูประวัติได้จากเบราว์เซอร์นี้</small></p></div></div>
+      <section class="how-section wrap" id="how-it-works"><div class="section-heading"><div><span class="eyebrow">A HEALTHIER ROUTINE</span><h2>ดูแลตัวเอง ง่ายกว่าที่คิด</h2></div><p>จากภาพหนึ่งภาพ สู่การเลือกกินอย่างเข้าใจ</p></div><div class="steps"><article><span class="step-number">01</span><h3>ถ่ายหรือเลือกรูปอาหาร</h3><p>เลือกมื้อที่อยากรู้จากอัลบั้ม หรือถ่ายภาพใหม่ให้เห็นอาหารชัดเจน</p></article><article><span class="step-number">02</span><h3>ให้ AI ช่วยประเมิน</h3><p>ระบุอาหาร ส่วนประกอบ และสารอาหารโดยประมาณ หรือทดลองระบบตัวอย่าง</p></article><article><span class="step-number">03</span><h3>เข้าใจ แล้วค่อย ๆ ปรับ</h3><p>ดูกราฟโภชนาการ บันทึกมื้ออาหาร และสร้างสมดุลในแบบที่เหมาะกับคุณ</p></article></div></section>
+      <div class="nutrition-note wrap"><span class="note-symbol">✳</span><div><h3>ไม่ต้องกินให้สมบูรณ์แบบ แค่เข้าใจให้มากขึ้น</h3><p>ภาพถ่ายไม่สามารถระบุปริมาณน้ำมัน น้ำตาล หรือเกลือได้แน่นอน ค่าที่ได้เป็นเพียงการประเมิน ไม่ใช่คำแนะนำทางการแพทย์</p></div><a href="#about" aria-label="อ่านข้อจำกัดและคำแนะนำ">↗</a></div>
+    </section>
+
+    <section id="scan" class="page workspace wrap" hidden aria-labelledby="scan-title">
+      <div class="page-heading"><div><span class="eyebrow">YOUR PLATE, DECODED</span><h1 id="scan-title">วันนี้คุณกินอะไร?</h1><p>เริ่มจากรูปอาหารหนึ่งรูป แล้วมารู้จักมื้อนี้ด้วยกัน</p></div><span class="privacy-pill">◈ ภาพไม่ถูกจัดเก็บบนเซิร์ฟเวอร์</span></div>
+      <div class="workspace-tabs" role="tablist" aria-label="วิธีดูโภชนาการ"><button id="tab-photo" role="tab" aria-selected="true" aria-controls="photo-panel" class="active">⌖ วิเคราะห์จากภาพ</button><button id="tab-search" role="tab" aria-selected="false" aria-controls="search-panel" tabindex="-1">⌕ ค้นหาอาหาร</button></div>
+      <div id="photo-panel" role="tabpanel" aria-labelledby="tab-photo">
+        <div class="scan-grid">
+          <div class="upload-card panel">
+            <div class="card-heading"><h2>รูปอาหารของคุณ</h2><span class="step-tag">ขั้นตอน 01</span></div>
+            <div id="dropzone" class="dropzone"><span class="upload-icon" aria-hidden="true">⌖</span><h3>มื้อนี้มีอะไรอร่อยบ้าง?</h3><p>ลากรูปมาวางที่นี่ หรือเลือกจากอุปกรณ์</p><button class="button" id="choose-image">เลือกรูปอาหาร <span aria-hidden="true">＋</span></button><button class="text-button" id="take-photo">เปิดกล้องถ่ายภาพ ↗</button><small>JPG, PNG, WebP, GIF · ไม่เกิน 5 MB / 20 MP</small></div>
+            <div id="preview-box" class="preview-box" hidden><img id="preview-image" alt="ภาพอาหารที่เลือกก่อนวิเคราะห์"><div class="preview-toolbar"><span id="file-label"></span><button id="replace-image" class="icon-button" aria-label="เปลี่ยนรูปภาพ">เปลี่ยนรูป</button><button id="remove-image" class="icon-button danger" aria-label="ลบรูปภาพ">ลบ</button></div></div>
+            <input type="file" id="file-input" accept="image/jpeg,image/png,image/webp,image/gif" hidden>
+            <input type="file" id="camera-input" accept="image/*" capture="environment" hidden>
+            <div class="image-tip"><span>☀</span><p><strong>เคล็ดลับเล็ก ๆ</strong> ถ่ายจากด้านบนในที่สว่าง ให้เห็นอาหารทั้งจาน หลีกเลี่ยงใบหน้าและข้อมูลส่วนตัว</p></div>
+          </div>
+          <div class="analysis-card panel">
+            <div class="card-heading"><h2>ตั้งค่าการวิเคราะห์</h2><span class="step-tag">ขั้นตอน 02</span></div>
+            <fieldset class="mode-selector"><legend>เลือกโหมด</legend><label><input type="radio" name="mode" value="demo" checked><span><strong>โหมดทดลอง <b class="badge amber">DEMO</b></strong><small>คำนวณจากอาหารที่เลือก ไม่ได้ตรวจจับภาพ</small></span></label><label><input type="radio" name="mode" value="ai"><span><strong>วิเคราะห์ด้วย AI จริง <b class="badge" id="ai-badge">กำลังตรวจสอบ</b></strong><small>ส่งภาพไปยัง Vision API ผ่าน Backend</small></span></label></fieldset>
+            <div id="demo-options"><label class="field-label" for="demo-food">อาหารตัวอย่างที่ต้องการทดลอง</label><select id="demo-food"><option value="">กำลังโหลดรายการอาหาร…</option></select><label class="field-label" for="demo-grams">ปริมาณอาหาร (กรัม)</label><input type="number" id="demo-grams" min="1" max="2000" value="100" step="1"><p class="field-help">เลือกชนิดอาหารด้วยตัวเอง ผลตัวอย่างไม่เกี่ยวข้องกับอาหารในภาพ</p></div>
+            <div id="ai-options" hidden><div class="inline-notice" id="ai-status">กำลังตรวจการเชื่อมต่อ…</div><label for="access-code" class="field-label">รหัสเข้าใช้ AI</label><input type="password" id="access-code" autocomplete="off" placeholder="รหัสส่วนตัวจากผู้ดูแลระบบ"><p class="field-help">ไม่ใช่ API Key · ใช้เฉพาะคำขอนี้ ไม่บันทึกในประวัติ</p><label class="consent"><input type="checkbox" id="image-consent"><span>ยินยอมส่งภาพที่ลบ metadata แล้วไปยังผู้ให้บริการ AI และเข้าใจว่าผลเป็นค่าประมาณ</span></label></div>
+            <button id="analyze-button" class="button full">วิเคราะห์สารอาหาร <span aria-hidden="true">↗</span></button>
+            <div id="progress" class="progress" role="status" hidden><span class="spinner"></span><span id="progress-text">กำลังเตรียมภาพอาหาร…</span></div>
+            <button id="reset-scan" class="text-button reset-button">ล้างข้อมูลและเริ่มใหม่</button>
+          </div>
+        </div>
+      </div>
+      <div id="search-panel" role="tabpanel" aria-labelledby="tab-search" hidden><div class="search-card panel"><div><h2>ค้นหาสารอาหาร ไม่ต้องมีรูป</h2><p>ข้อมูลอ้างอิงอาหารทั่วไป 8 รายการ · ไม่ใช่ผลวิเคราะห์ AI</p></div><form id="search-form" class="search-form"><label class="sr-only" for="food-query">ชื่ออาหาร</label><input id="food-query" type="search" placeholder="ลองค้นหา ข้าว ไก่ กล้วย หรือโปรตีน" maxlength="100"><button class="button" type="submit">ค้นหา ⌕</button></form><div id="food-list" class="food-list" aria-live="polite"></div><div id="quantity-controls" class="quantity-controls" hidden><label for="search-grams">ปริมาณที่ต้องการ (กรัม)</label><input type="number" id="search-grams" value="100" min="1" max="2000"><button id="calculate-food" class="button">คำนวณสารอาหาร ↗</button></div><p class="field-help">อ้างอิงองค์ประกอบอาหารทั่วไป USDA FoodData Central โดยประมาณต่อส่วนที่กินได้ สูตรและวิธีปรุงอาจทำให้ค่าแตกต่าง</p></div></div>
+      <section id="results" class="results" hidden aria-labelledby="result-title"><div class="result-heading"><div><span class="eyebrow">A CLOSER LOOK AT YOUR MEAL</span><h2 id="result-title" tabindex="-1">ผลวิเคราะห์อาหาร</h2><div class="result-meta"><span id="result-badge" class="badge"></span><span id="result-portion"></span><span id="result-confidence"></span></div></div><div class="result-actions"><button class="button outline" id="save-result">บันทึกมื้อนี้ ＋</button><button class="icon-button" id="new-scan">เริ่มใหม่ ↗</button></div></div><div class="result-context"><img id="result-image" alt="รูปอาหารในผลวิเคราะห์" hidden><div><h3>ส่วนประกอบที่ประเมิน</h3><p id="result-ingredients"></p></div></div><div id="nutrient-grid" class="nutrient-grid"></div><div class="chart-grid"><article class="panel chart-card"><h3>สมดุลพลังงานในจาน</h3><p>สัดส่วนพลังงานจากโปรตีน คาร์บ และไขมัน</p><div class="chart-area"><canvas id="macro-chart" role="img" aria-label="กราฟวงกลมสัดส่วนพลังงานจากสารอาหาร"></canvas></div><p class="field-help">คำนวณด้วย 4 / 4 / 9 kcal ต่อกรัม ไม่รวมพลังงานจากองค์ประกอบอื่น</p></article><article class="panel chart-card"><h3>มองสารอาหารให้ชัดขึ้น</h3><p>เปรียบเทียบปริมาณหน่วยกรัม ไม่ใช่ร้อยละความต้องการต่อวัน</p><div class="chart-area"><canvas id="nutrient-chart" role="img" aria-label="กราฟแท่งสารอาหารหน่วยกรัม"></canvas></div><p class="field-help">โซเดียมแสดงเป็นมิลลิกรัมในการ์ด จึงไม่นำมาเปรียบเทียบในกราฟนี้</p></article></div><div class="result-disclaimer"><strong>อ่านผลอย่างเข้าใจ</strong><p id="result-notes"></p><p>ไม่ใช้เพื่อวินิจฉัยโรค คำนวณยา หรือกำหนดอาหารสำหรับผู้มีโรคประจำตัว หากมีข้อจำกัดด้านอาหารควรปรึกษานักกำหนดอาหาร</p></div></section>
+    </section>
+
+    <section id="history" class="page workspace wrap" hidden aria-labelledby="history-title"><div class="page-heading"><div><span class="eyebrow">YOUR FOOD JOURNAL</span><h1 id="history-title">บันทึกมื้อดี ๆ ของคุณ</h1><p>ประวัติอยู่ในเบราว์เซอร์นี้เท่านั้น ไม่ส่งไปเก็บที่เซิร์ฟเวอร์</p></div><button id="clear-history" class="button outline danger">ลบประวัติทั้งหมด</button></div><div class="inline-notice">เพื่อความเป็นส่วนตัว เก็บประวัติไม่เกิน 30 รายการ และลบรายการอายุเกิน 365 วันเมื่อเปิดเว็บ ล้างข้อมูลเบราว์เซอร์แล้วประวัติจะหาย</div><div id="history-list" class="history-grid"></div></section>
+
+    <section id="about" class="page workspace wrap" hidden aria-labelledby="about-title"><div class="about-hero"><span class="eyebrow">MORE AWARE. MORE BALANCED.</span><h1 id="about-title">อาหารที่ดี เริ่มจาก<br><span class="green">ความเข้าใจที่ดี</span></h1><p>AI FOOD SCANNER เป็นผู้ช่วยทำความเข้าใจมื้ออาหาร ไม่ใช่เครื่องมือวินิจฉัยทางการแพทย์ เราอยากให้เรื่องโภชนาการใกล้ตัว อ่านง่าย และไม่กดดัน</p><a href="#scan" class="button">เริ่มรู้จักมื้ออาหารของคุณ ↗</a></div><div class="about-grid"><article class="panel"><span class="benefit-icon">✧</span><h2>AI จริง กับโหมดทดลอง</h2><p>ระบบจริงส่งภาพไปยัง Vision API ผ่านเซิร์ฟเวอร์เมื่อคุณยินยอม ส่วนโหมดทดลองใช้รายการอาหารที่คุณเลือกและระบุ DEMO เสมอ ไม่มีการแอบอ้างว่าตรวจจับภาพได้</p></article><article class="panel"><span class="benefit-icon">◈</span><h2>ความเป็นส่วนตัวมาก่อน</h2><p>API Key อยู่ใน Backend ภาพถูกแปลงใหม่เพื่อลบ metadata ก่อนส่ง AI โดย GIF ใช้เฟรมแรก ไม่มีการเขียนภาพลงดิสก์เซิร์ฟเวอร์ ประวัติที่กดบันทึกจะมีรูปย่อในอุปกรณ์นี้ ผู้ให้บริการ AI อาจมีนโยบายเก็บข้อมูลของตนเอง</p></article><article class="panel"><span class="benefit-icon">◴</span><h2>ค่าประมาณ ไม่ใช่ค่าตายตัว</h2><p>แสง มุมภาพ ขนาดจาน น้ำมัน น้ำตาล และเครื่องปรุง มีผลต่อความคลาดเคลื่อน คะแนนความมั่นใจมาจาก AI เอง ไม่ใช่การรับรองความถูกต้อง ควรใช้เครื่องชั่งและฉลากเพื่อความแม่นยำ</p></article><article class="panel"><span class="benefit-icon">❋</span><h2>สมดุลในแบบของคุณ</h2><p>เพิ่มผักหลากสี เลือกโปรตีนที่เหมาะสม สลับธัญพืชไม่ขัดสี ดื่มน้ำ และสังเกตความอิ่ม ไม่จำเป็นต้องนับทุกแคลอรี หากกังวลเรื่องอาหารหรือสุขภาพควรขอคำแนะนำจากผู้เชี่ยวชาญ</p></article></div></section>
+  </main>
+  <footer class="footer wrap"><a href="#home" class="footer-brand">✳ FOODSCAN</a><span>เข้าใจทุกคำ ดูแลทุกวัน</span><span>สร้างเพื่อความเข้าใจ ไม่ใช่การวินิจฉัย</span><a href="#about">เกี่ยวกับและความเป็นส่วนตัว ↗</a></footer>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <dialog id="confirm-dialog"><form method="dialog"><span class="eyebrow">PLEASE CONFIRM</span><h2 id="confirm-title">ยืนยันการลบ</h2><p id="confirm-description"></p><div class="dialog-actions"><button class="button outline" value="cancel" autofocus>ยกเลิก</button><button class="button destructive" value="confirm">ยืนยันลบ</button></div></form></dialog>
+  <noscript><div class="noscript">กรุณาเปิด JavaScript เพื่ออัปโหลดรูป วิเคราะห์อาหาร และใช้งานประวัติ</div></noscript>
+</body>
+</html>
